@@ -6,7 +6,6 @@ pipeline {
     }
     environment {
         def nodeHome = tool name: 'Node6'
-        env.PATH = "${nodeHome}/bin:${env.PATH}"
     }
     stages {
         stage('npm-build') {
