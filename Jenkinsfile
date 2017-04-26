@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo "Branch is ${env.BRANCH_NAME}..."
                 withNPM(npmrcConfig: 'npm-artifactory') {
+                    sh 'whoami'
                     sh 'npm install'
                 }
             }
