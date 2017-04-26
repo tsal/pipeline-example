@@ -1,4 +1,8 @@
 pipeline {
+
+    def nodeHome = tool name: 'Node6', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+    env.PATH = "${nodeHome}/bin:${env.PATH}"
+
     agent {
         docker {
             image 'node:7.4'
