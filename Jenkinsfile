@@ -5,15 +5,17 @@ pipeline {
         }
     }
     environment {
-        def nodeHome = tool name: 'Node6', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+        def nodeHome = tool name: 'Node6'
         env.PATH = "${nodeHome}/bin:${env.PATH}"
     }
     stages {
         stage('npm-build') {
             steps {
-                echo "Branch is ${env.BRANCH_NAME}..."
-                withNPM(npmrcConfig: 'npm-artifactory') {
-                    sh 'npm install'
+                withEnv(["PATH+NODE=${tool name: 'node-5.10.1'}/bin"]) {
+                    echo "Branch is ${env.BRANCH_NAME}..."
+                    withNPM(npmrcConfig: 'npm-artifactory') {
+                        sh 'npm install'
+                    }
                 }
             }
         }
