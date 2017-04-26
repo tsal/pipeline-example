@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('npm-build') {
             steps {
-                withEnv(["PATH+NODE=${tool name: 'node-5.10.1'}/bin"]) {
+                withEnv(["PATH+NODE=${tool name: 'Node6'}/bin"]) {
                     echo "Branch is ${env.BRANCH_NAME}..."
                     withNPM(npmrcConfig: 'npm-artifactory') {
                         sh 'npm install'
